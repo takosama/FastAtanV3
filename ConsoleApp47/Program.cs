@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Runtime.Intrinsics;
 namespace ConsoleApp46
@@ -24,7 +24,7 @@ namespace ConsoleApp46
 
                 for (int i = 0; i < 10000000; i++)
                 {
-                    //   ans=      Math.Atan(i);
+                       ans=      Math.Atan(i);
 
                     ans = Atan.Compute(i);
                 }
@@ -54,26 +54,26 @@ namespace ConsoleApp46
             {
                 return (float)Math.Atan(i);
             }
-            Vector128<float> a = Sse.SetVector128(0.333333333f, -0.2f, +0.142857142857f, -0.111111111111f);
+            Vector128<float> a = Sse.SetVector128(-1,0.333333333f, -0.2f, +0.142857142857f);
 
 
 
             // var a = 
             var p = i * i;
 
-            var j = i * i * i;
+            var j = p * i;
             var k = j * p;
             var l = k * p;
             var m = l * p;
 
-            var b = Sse.SetVector128(j, k, l, m);
+            var b = Sse.SetVector128(i,j, k, l);
 
 
             var ans = Sse.Divide(a, b);
 
             Sse.Store(po, ans);
 
-            float an = 1.57079633f - 1.0f / i;
+            float an = 1.57079633f ;
             an += po[0] + po[1] + po[2] + po[3];
 
 
